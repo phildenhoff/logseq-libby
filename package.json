@@ -1,5 +1,5 @@
 {
-  "name": "logseq-plugin-template",
+  "name": "logseq-libby",
   "private": false,
   "license": "MIT",
   "version": "0.1.0",
@@ -36,11 +36,11 @@
     "vitest": "^0.24.1"
   },
   "logseq": {
-    "id": "logseq-plugin-template",
-    "description": "A template for Logseq plugins",
-    "title": "Logseq Plugin Template",
-    "author": "you!",
+    "id": "logseq-libby",
+    "description": "A Logseq plugin for Libby",
+    "title": "Libby",
+    "author": "phildenhoff",
     "icon": "./public/logo.svg",
-    "repo": "phildenhoff/logseq-plugin-template"
+    "repo": "phildenhoff/logseq-libby"
   }
 }
