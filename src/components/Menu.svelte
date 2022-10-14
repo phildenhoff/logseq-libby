@@ -2,7 +2,15 @@
   import { onMount } from "svelte";
   import { writable, derived } from "svelte/store";
 
+  import Highlight from "./Highlight.svelte";
+
+  type Annotation = {
+    highlight: string;
+    annotation: string;
+  };
+
   export let theme: "light" | "dark";
+  export let annotations: Annotation[] = [];
 
   let files: FileList;
 
@@ -22,7 +30,6 @@
 
 <div class="menu {theme}">
   <h2>Libby</h2>
-
   {#if !files}
     <label for="avatar">Choose a Libby export</label>
     <input
@@ -48,6 +55,14 @@
         Clear selection</button
       >
       <button class="action action__approve" on:click> Preview import</button>
+    </div>
+  {/if}
+
+  {#if annotations && annotations.length > 0}
+    <div class="annotations">
+      {#each annotations as an}
+        <Highlight highlight={an.highlight} annotation={an.annotation} />
+      {/each}
     </div>
   {/if}
 </div>
@@ -105,5 +120,11 @@
 
   .action:hover {
     color: var(--libby-blue-light-color);
+  }
+
+  .annotations {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
   }
 </style>

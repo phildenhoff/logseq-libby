@@ -3,9 +3,17 @@
   import Menu from "./Menu.svelte";
 
   export let Hst;
+
+  let sampleAnnotations = [
+    { highlight: "Hi there", annotation: "This is a note!" },
+    { highlight: "Example 2", annotation: "Another note here" },
+  ];
 </script>
 
 <Hst.Story title="Menu">
-  <Hst.Variant title="default"><Menu theme='light' /></Hst.Variant>
-  <Hst.Variant title="dark"><Menu theme='dark' /></Hst.Variant>
+  <Hst.Variant title="default"><Menu theme="light" /></Hst.Variant>
+  <Hst.Variant title="dark"><Menu theme="dark" /></Hst.Variant>
+  <Hst.Variant title="dark with annotations"
+    ><Menu theme="dark" annotations={sampleAnnotations} /></Hst.Variant
+  >
 </Hst.Story>
