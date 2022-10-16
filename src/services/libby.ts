@@ -30,3 +30,9 @@ type LibbyExport = {
 
 export const coverUrlFromExport = (libExport: LibbyExport) =>
   libExport.readingJourney.cover.url;
+
+export const annotationsFromExport = (libExport: LibbyExport) =>
+  libExport.highlights.map((item) => ({
+    annotation: item.note,
+    highlight: item.quote,
+  }));

@@ -43,7 +43,6 @@
     color: var(--libby-primary-text-color);
     width: inherit;
     max-width: 60ch;
-    padding: 1em;
     text-align: left;
   }
 

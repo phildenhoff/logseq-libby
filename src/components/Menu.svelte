@@ -3,6 +3,9 @@
   import { writable, derived } from "svelte/store";
 
   import Highlight from "./Highlight.svelte";
+  import Actions from "./Actions.svelte";
+
+  import { annotationsFromExport } from "../services/libby";
 
   type Annotation = {
     highlight: string;
@@ -12,18 +15,19 @@
   export let theme: "light" | "dark";
   export let annotations: Annotation[] = [];
 
+  // Note that `files` is of type `FileList`, not an Array:
+  // https://developer.mozilla.org/en-US/docs/Web/API/FileList
   let files: FileList;
 
-  $: if (files) {
-    // Note that `files` is of type `FileList`, not an Array:
-    // https://developer.mozilla.org/en-US/docs/Web/API/FileList
-
-    for (const file of files) {
-      console.log(`${file.name}: ${file.size} bytes`);
-      file.text().then((text) => {
-        const j = JSON.parse(text);
-        console.log({ j });
+  $: localAnnotations = [];
+  $: {
+    if (files) {
+      const x = Array.from(files).flatMap((file) => {
+        return file.text().then((text) => {
+          return annotationsFromExport(JSON.parse(text));
+        });
       });
+      Promise.all(x).then((resolved) => (localAnnotations = resolved.flat()));
     }
   }
 </script>
@@ -46,24 +50,29 @@
     {#each Array.from(files) as file}
       <p>{file.name} ({file.size} bytes)</p>
     {/each}
-
-    <div class="actions">
-      <button
-        class="action action__reject"
-        on:click={() => (files = undefined)}
-      >
-        Clear selection</button
-      >
-      <button class="action action__approve" on:click> Preview import</button>
-    </div>
   {/if}
 
-  {#if annotations && annotations.length > 0}
+  {#if localAnnotations && localAnnotations.length > 0}
+    <h3>{localAnnotations.length} annotations to import</h3>
     <div class="annotations">
-      {#each annotations as an}
-        <Highlight highlight={an.highlight} annotation={an.annotation} />
+      {#each localAnnotations as an}
+        <Highlight
+          {theme}
+          highlight={an.highlight}
+          annotation={an.annotation}
+        />
       {/each}
     </div>
+    <Actions
+      left={{
+        text: "Cancel import",
+        onClick: () => {
+          files = undefined;
+          localAnnotations = undefined;
+        },
+      }}
+      right={{ text: "Import annotations", onClick: () => {} }}
+    />
   {/if}
 </div>
 
@@ -99,7 +108,7 @@
     color: var(--libby-primary-text-color);
     margin: 0 auto;
     max-width: 480px;
-    padding: 1em;
+    padding: 1rem;
     text-align: left;
   }
 
@@ -125,6 +134,9 @@
   .annotations {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    height: fit-content;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
   }
 </style>
