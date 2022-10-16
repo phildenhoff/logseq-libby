@@ -32,7 +32,7 @@
   }
 </script>
 
-<div class="menu {theme}">
+<div class="menu {theme}" on:click={() => undefined}>
   <h2>Libby</h2>
   {#if !files}
     <label for="avatar">Choose a Libby export</label>
