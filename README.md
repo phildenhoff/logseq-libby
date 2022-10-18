@@ -1,39 +1,24 @@
-# Logseq Plugin template
+# Libby plugin for Logseq
 
-A template for Logseq plugins, using Svelte, Vitest, Playwright, and pnpm.
+Import your notes from Libby into Logseq.
 
-## Getting set up
+## How to
 
-Install pnpm, then you can either hit "Use this template" above or use degit:
+1. [Export your Reading Data from Libby as a JSON file](https://help.libbyapp.com/en-us/6151.htm)
+  a. You can use [Libby on the web](https://libbyapp.com)
+2. Get the JSON file onto your computer running Logseq with this plugin (if it isn't there already)
+3. Press the Book icon to open the plugin
+4. Select the libby-export JSON file you just got
+5. You should see a preview of your highlights & any notes you took. If this looks good, import!
+6. You can rename & reorganize the notes at will. You'll need to delete the file (or blocks) if you want to re-import the reading journey.
+
+
+## Contributing
+
+### Setup
 
 ```
-npx degit phildenhoff/logseq-plugin-template my-ls-plugin
-cd my-ls-plugin
-git init
-```
-
-Then,
-
-```
+gh repo clone phildenhoff/logseq-libby
+cd logseq-libby
 pnpm install
 ```
-
-
-## Technical choices
-
-### Why Svelte?
-
-It's a pretty-good framework. Feel free to adapt this for any other framework.
-
-### Why Vitest?
-
-It's faster than Jest, and a better fit for unit tests than Playwright.
-
-### Why Playwright?
-
-It allows for component/integration-level tests in your plugin.
-
-### Why pnpm?
-
-It's faster than npm & yarn and more stable than bun...
-
