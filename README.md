@@ -22,3 +22,5 @@ gh repo clone phildenhoff/logseq-libby
 cd logseq-libby
 pnpm install
 ```
+
+Now you can `pnpm run dev` or `pnpm histoire dev`
