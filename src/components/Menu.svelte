@@ -2,40 +2,67 @@
   import { onMount } from "svelte";
   import { writable, derived } from "svelte/store";
 
+  import { annotationsFromExport, detailsFromExport } from "../services/libby";
+
+  import type {Annotation} from "../types";
+  import {importAnnotations} from "../utils/importAnnotations";
+
+  import logo from "../assets/logo.svg";
   import Highlight from "./Highlight.svelte";
   import Actions from "./Actions.svelte";
 
-  import { annotationsFromExport } from "../services/libby";
-
-  type Annotation = {
-    highlight: string;
-    annotation: string;
+  type AnnotationWithDetails = {
+    details: {
+      title: string,
+      author: string
+    },
+    annotations: Annotation[]
   };
 
   export let theme: "light" | "dark";
-  export let annotations: Annotation[] = [];
 
   // Note that `files` is of type `FileList`, not an Array:
   // https://developer.mozilla.org/en-US/docs/Web/API/FileList
   let files: FileList;
 
-  $: localAnnotations = [];
+  $: fileAnnotations = [] as AnnotationWithDetails[];
+  $: localAnnotations = [] as Annotation[];
   $: {
     if (files) {
-      const x = Array.from(files).flatMap((file) => {
+      const x = Array.from(files).map((file) => {
         return file.text().then((text) => {
-          return annotationsFromExport(JSON.parse(text));
+          const fileJson = JSON.parse(text);
+          return {
+            details: detailsFromExport(fileJson),
+            annotations: annotationsFromExport(fileJson),
+          } 
         });
       });
-      Promise.all(x).then((resolved) => (localAnnotations = resolved.flat()));
+      Promise.all(x).then((resolved) => (localAnnotations = resolved.map(item => item.annotations).flat()));
+      Promise.all(x).then((resolved) => (fileAnnotations = resolved));
     }
   }
+
+  const onImport = () => {
+    fileAnnotations.forEach((item) => {
+      const formattedPageTitle = `Libby notes from ${item.details.title} by ${item.details.author}`;
+      importAnnotations(formattedPageTitle, item.annotations);
+      logseq.hideMainUI();
+      logseq.UI.showMsg(`Imported Libby notes for ${item.details.title}`, 'success', { timeout: 3000 });
+      fileAnnotations = [];
+      localAnnotations = [];
+      files = undefined;
+    });
+  };
 </script>
 
-<div class="menu {theme}" on:click={() => undefined}>
-  <h2>Libby</h2>
+<div class="menu {theme}" on:click|stopPropagation={() => undefined}>
+  <header>
+    <img src={logo} alt="Libby logo" />
+    <h2>Libby</h2>
+  </header>
   {#if !files}
-    <label for="avatar">Choose a Libby export</label>
+    <label for="avatar">Choose a reading journal export</label>
     <input
       accept="application/json"
       bind:files
@@ -71,7 +98,7 @@
           localAnnotations = undefined;
         },
       }}
-      right={{ text: "Import annotations", onClick: () => {} }}
+      right={{ text: "Import annotations", onClick: onImport }}
     />
   {/if}
 </div>
@@ -110,6 +137,18 @@
     max-width: 480px;
     padding: 1rem;
     text-align: left;
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.25rem;
+  }
+
+  header img {
+    height: 1.5rem;
+    margin-right: 1rem;
   }
 
   .actions {

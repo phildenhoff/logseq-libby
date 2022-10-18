@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="libbylogo" xmlns:xlink="http://www.w3.org/1999/xlink" width="133" height="133" viewBox="0 0 133 133">
+  <title id="libbylogo">Libby App Logo</title>
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_782" data-name="Ellipse 782" cx="60.5" cy="60.5" r="60.5" fill="#631a35"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_790" data-name="Rectangle 790" width="120.856" height="145.028" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_4692" data-name="Group 4692" transform="translate(-85 -391)">
+    <g id="Mask_Group_11" data-name="Mask Group 11" transform="translate(91 397)" clip-path="url(#clip-path)">
+      <g id="Libby_App_icon" data-name="Libby App icon" transform="translate(0 -15.107)">
+        <g id="Libby_-_App_Icon" data-name="Libby - App Icon" transform="translate(0 0)">
+          <g id="Group_4691" data-name="Group 4691" transform="translate(0 0)">
+            <rect id="Rectangle_788" data-name="Rectangle 788" width="120.856" height="120.856" fill="#631a35"/>
+            <g id="Group_4690" data-name="Group 4690" clip-path="url(#clip-path-2)">
+              <path id="Path_23125" data-name="Path 23125" d="M186.885,601.271a39.569,39.569,0,1,1,58.215,0Z" transform="translate(-155.595 -471.705)" fill="#a61c49" fill-rule="evenodd"/>
+              <path id="Path_23126" data-name="Path 23126" d="M246.059,568.9A35.584,35.584,0,1,1,210.5,604.484,35.574,35.574,0,0,1,246.059,568.9" transform="translate(-185.674 -501.78)" fill="#fea" fill-rule="evenodd"/>
+              <path id="Path_23127" data-name="Path 23127" d="M632.111,460.8s-6.569,3.222-8.008,3.222S616,460.8,616,460.8v8.427a41.442,41.442,0,0,1,16.1,9.194Z" transform="translate(-543.349 -406.438)" fill="#29cfc3" fill-rule="evenodd"/>
+              <path id="Path_23128" data-name="Path 23128" d="M672.5,666.587A60.287,60.287,0,0,0,683.079,646.7a39.759,39.759,0,0,1,8.315,38.145Z" transform="translate(-593.185 -570.398)" fill="#a61c49" fill-rule="evenodd"/>
+              <path id="Path_23129" data-name="Path 23129" d="M179.053,588.725a39.6,39.6,0,0,1,65.115-42.134,60.469,60.469,0,0,1-65.115,42.134" transform="translate(-155.595 -471.704)" fill="#a61c49" fill-rule="evenodd"/>
+              <path id="Path_23130" data-name="Path 23130" d="M600.6,894.924a4.954,4.954,0,1,1,7.147,3.175,4.964,4.964,0,0,0-7.147-3.175" transform="translate(-529.637 -783.899)" fill="#631a35" fill-rule="evenodd"/>
+              <path id="Path_23131" data-name="Path 23131" d="M603.887,928.81c-3.42,0-7.253-4.426-6.829-5.063s4.187,1.109,6.6,1.109c2.642,0,6.7-1.747,7.124-1.133s-3.373,5.087-6.9,5.087" transform="translate(-526.612 -814.61)" fill="#631a35" fill-rule="evenodd"/>
+              <path id="Path_23132" data-name="Path 23132" d="M131,671.087a9.641,9.641,0,0,1,11.629-9.855s22.928,3.3,30.712,7.731h5.189c7.855-4.461,30-7.7,30-7.7a9.623,9.623,0,0,1,11.629,9.82v57.005H131Z" transform="translate(-115.55 -583.065)" fill="#631a35" fill-rule="evenodd"/>
+              <path id="Path_23133" data-name="Path 23133" d="M131,684.423a6.042,6.042,0,0,1,7.253-6.173s27.3,4.06,35.087,8.5h5.189c7.855-4.473,34.38-8.474,34.38-8.474a6.027,6.027,0,0,1,7.253,6.149v58.74H131Z" transform="translate(-115.55 -598.136)" fill="#fff" fill-rule="evenodd"/>
+              <path id="Path_23134" data-name="Path 23134" d="M142.417,768.687V715.1L99.133,707.2a4.914,4.914,0,0,0-6.015,5.193L93,768.687Z" transform="translate(-82.032 -623.659)" fill="#29cfc3" fill-rule="evenodd"/>
+              <path id="Path_23135" data-name="Path 23135" d="M512,767.8V714.1l43.284-7.908a5.092,5.092,0,0,1,6.251,5.193V767.8Z" transform="translate(-451.615 -622.775)" fill="#23b0a7" fill-rule="evenodd"/>
+              <rect id="Rectangle_789" data-name="Rectangle 789" width="12.841" height="55.141" transform="translate(53.63 89.887)" fill="#26bfb5"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Ellipse_783" data-name="Ellipse 783" transform="translate(91 397)" fill="none" stroke="#fff" stroke-width="6">
+      <circle cx="60.5" cy="60.5" r="60.5" stroke="none"/>
+      <circle cx="60.5" cy="60.5" r="63.5" fill="none"/>
+    </g>
+  </g>
+</svg>

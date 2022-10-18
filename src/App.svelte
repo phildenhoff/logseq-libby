@@ -1,11 +1,10 @@
 <script lang="ts">
-  import svelteLogo from "./assets/svelte.svg";
   import Menu from "./components/Menu.svelte";
 
   const l = window?.logseq ?? ({} as ILSPluginUser);
 
   const close = () => l?.hideMainUI();
-  const closeOnKeys = (event) => event.key === 'Escape' && close();
+  const closeOnKeys = (event) => event.key === "Escape" && close();
 </script>
 
 <main
@@ -13,9 +12,7 @@
   on:click={close}
   on:keydown={closeOnKeys}
 >
-  <div on:click|stopPropagation={() => undefined}>
-    <Menu />
-  </div>
+  <Menu />
 </main>
 
 <style>

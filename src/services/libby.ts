@@ -5,7 +5,11 @@ type ReadableCover = {
   color?: string;
   format?: "ebook" | string;
 };
-type ReadableTitle = {};
+type ReadableTitle = {
+  text?: string;
+  url?: string;
+  titleId?: string;
+};
 type Percent = number;
 type Highlight = {
   timestamp?: number;
@@ -30,6 +34,11 @@ type LibbyExport = {
 
 export const coverUrlFromExport = (libExport: LibbyExport) =>
   libExport.readingJourney.cover.url;
+
+export const detailsFromExport = (libExport: LibbyExport) => ({
+  title: libExport.readingJourney.title.text,
+  author: libExport.readingJourney.author,
+});
 
 export const annotationsFromExport = (libExport: LibbyExport) =>
   libExport.highlights.map((item) => ({

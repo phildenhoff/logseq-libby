@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { writable, derived } from "svelte/store";
 
-  export let theme: 'light' | 'dark';
+  export let theme: "light" | "dark";
   export let highlight: string;
   export let annotation: string | undefined;
 </script>
