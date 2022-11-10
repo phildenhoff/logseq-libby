@@ -4,8 +4,8 @@
 
   import { annotationsFromExport, detailsFromExport } from "../services/libby";
 
-  import type {Annotation} from "../types";
-  import {importAnnotations} from "../utils/importAnnotations";
+  import type { Annotation } from "../types";
+  import { importAnnotations } from "../utils/importAnnotations";
 
   import logo from "../assets/logo.svg";
   import Highlight from "./Highlight.svelte";
@@ -13,10 +13,10 @@
 
   type AnnotationWithDetails = {
     details: {
-      title: string,
-      author: string
-    },
-    annotations: Annotation[]
+      title: string;
+      author: string;
+    };
+    annotations: Annotation[];
   };
 
   export let theme: "light" | "dark";
@@ -35,10 +35,13 @@
           return {
             details: detailsFromExport(fileJson),
             annotations: annotationsFromExport(fileJson),
-          } 
+          };
         });
       });
-      Promise.all(x).then((resolved) => (localAnnotations = resolved.map(item => item.annotations).flat()));
+      Promise.all(x).then(
+        (resolved) =>
+          (localAnnotations = resolved.map((item) => item.annotations).flat())
+      );
       Promise.all(x).then((resolved) => (fileAnnotations = resolved));
     }
   }
@@ -48,7 +51,11 @@
       const formattedPageTitle = `Libby notes from ${item.details.title} by ${item.details.author}`;
       importAnnotations(formattedPageTitle, item.annotations);
       logseq.hideMainUI();
-      logseq.UI.showMsg(`Imported Libby notes for ${item.details.title}`, 'success', { timeout: 3000 });
+      logseq.UI.showMsg(
+        `Imported Libby notes for ${item.details.title}`,
+        "success",
+        { timeout: 3000 }
+      );
       fileAnnotations = [];
       localAnnotations = [];
       files = undefined;
