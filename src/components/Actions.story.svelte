@@ -2,7 +2,7 @@
   import type { Hst } from "@histoire/plugin-svelte";
   import Actions from "./Actions.svelte";
 
-  export let Hst;
+  export let Hst: Hst;
 </script>
 
 <Hst.Story title="Actions">

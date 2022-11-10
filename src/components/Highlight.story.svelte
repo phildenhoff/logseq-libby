@@ -2,7 +2,7 @@
   import type { Hst } from "@histoire/plugin-svelte";
   import Highlight from "./Highlight.svelte";
 
-  export let Hst;
+  export let Hst: Hst;
   let highlight = "Important content to save for later here";
   let annotation = "Yes very important";
 
