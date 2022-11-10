@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { writable, derived } from "svelte/store";
-
   import { annotationsFromExport, detailsFromExport } from "../services/libby";
 
   import type { Annotation } from "../types";

@@ -1,10 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { writable, derived } from "svelte/store";
-
-  import Highlight from "./Highlight.svelte";
-
-  export type Action = {
+  type Action = {
     text: string;
     /**
      * Action to take on click.
