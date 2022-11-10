@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite";
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: "jsdom",
     exclude: ["**/e2e/**/*", "**/node_modules/**/*"],
   },
-})
+});
