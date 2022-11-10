@@ -136,7 +136,10 @@
     margin: 0 auto;
     max-width: 480px;
     padding: 1rem;
+    position: absolute;
+    right: 40px;
     text-align: left;
+    top: 60px;
   }
 
   header {
