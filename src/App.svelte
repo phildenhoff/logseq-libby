@@ -1,10 +1,17 @@
 <script lang="ts">
+  import type { ILSPluginUser } from "@logseq/libs/dist/LSPlugin";
   import Menu from "./components/Menu.svelte";
 
   const l = window?.logseq ?? ({} as ILSPluginUser);
 
   const close = () => l?.hideMainUI();
-  const closeOnKeys = (event) => event.key === "Escape" && close();
+  const closeOnKeys = (event: KeyboardEvent) => event.key === "Escape" && close();
+  const getTheme = async () => (await l.App.getUserConfigs()).preferredThemeMode;
+  l?.App.onThemeModeChanged(({ mode }) => {
+    themePromise = Promise.resolve(mode);
+  });
+  
+  let themePromise = getTheme();
 </script>
 
 <main
@@ -12,7 +19,10 @@
   on:click={close}
   on:keydown={closeOnKeys}
 >
-  <Menu />
+  {#await themePromise then theme}
+    <p>{theme}</p>
+    <Menu theme={theme}/>
+  {/await}
 </main>
 
 <style>
