@@ -42,7 +42,7 @@
     "description": "A Logseq plugin for Libby",
     "title": "Libby",
     "author": "phildenhoff",
-    "icon": "./public/logo.svg",
+    "icon": "logo.svg",
     "repo": "phildenhoff/logseq-libby"
   }
 }
